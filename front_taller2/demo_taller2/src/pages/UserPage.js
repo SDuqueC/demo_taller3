@@ -66,68 +66,6 @@ export default function UserPage() {
 
   return (
       <>
-        {loading ? (
-            <Backdrop
-                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 5000, position: 'absolute'}}
-                open = {loading}
-            >
-              <CircularProgress color="inherit" />
-            </Backdrop>
-        ) : (
-            <Modal
-                open={openForm}
-                onClose={handleCloseForm}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-              <form onSubmit={handleSubmit}>
-                <TextField
-                    label="Username"
-                    value={user.username}
-                    onChange={handleInputChange}
-                    required
-                />
-                <TextField
-                    label="First Name"
-                    value={user.first_name}
-                    onChange={handleInputChange}
-                    required
-                />
-                <TextField
-                    label="Last Name"
-                    value={user.last_name}
-                    onChange={handleInputChange}
-                    required
-                />
-                <TextField
-                    label="Email"
-                    value={user.email}
-                    onChange={handleInputChange}
-                    required
-                />
-                <FormControlLabel
-                    control={
-                      <Checkbox
-                          checked={user.is_staff}
-                          onChange={handleInputChange}
-                      />
-                    }
-                    label="Staff"
-                />
-                <FormControlLabel
-                    control={
-                      <Checkbox
-                          checked={user.is_active}
-                          onChange={handleInputChange}
-                      />
-                    }
-                    label="Active"
-                />
-                <Button type="submit">Submit</Button>
-                <Button onClick={handleCloseForm}>Cancel</Button>
-              </form>
-            </Modal>
-        )}
         <Helmet>
           <title>Usuarios</title>
         </Helmet>
@@ -139,7 +77,7 @@ export default function UserPage() {
             </Typography>
             <Button sx={{textTransform: "none"}} variant="contained" startIcon={<Iconify icon="eva:plus-fill"/>}
                     onClick={(event) => handleOpenForm(event, null)}>
-              Cliente
+              Usuario
             </Button>
           </Stack>
 
@@ -148,12 +86,12 @@ export default function UserPage() {
           <UserDelete/>
 
           <Card>
-            <ListToolbar context={UserContext} name={"Cliente"} title={"clientes"}/>
+            <ListToolbar context={UserContext} name={"Usuario"} title={"usuarios"}/>
 
             <Scrollbar>
               <TableContainer sx={{minWidth: 1000}}>
                 <Table>
-                  <ListHead context={UserContext} name={"clientes"}/>
+                  <ListHead context={UserContext} name={"usuarios"}/>
                   <TableBody>
                     {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                       const {
@@ -180,7 +118,9 @@ export default function UserPage() {
 
                             <TableCell align="left">{username}</TableCell>
 
-                            <TableCell align="left">{nombre}</TableCell>
+                            <TableCell align="left">{first_name}</TableCell>
+
+                            <TableCell align="left">{last_name}</TableCell>
 
                             <TableCell align="left">{email}</TableCell>
                             
@@ -194,10 +134,10 @@ export default function UserPage() {
 
                             <TableCell align="center" width={"5%"}>
                               <div style={{ display: 'flex' }}>
-                                <IconButton id={`editar-cliente-${id}`} color="inherit" onClick={(event)=>handleOpenForm(event, id)}>
+                                <IconButton id={`editar-usuario-${id}`} color="inherit" onClick={(event)=>handleOpenForm(event, id)}>
                                   <EditIcon />
                                 </IconButton>
-                                {is_staff && <IconButton id={`eliminar-cliente-${id}`} color="inherit" onClick={(event)=>handleOpenDelete(event, id)}>
+                                {is_staff && <IconButton id={`eliminar-usuario-${id}`} color="inherit" onClick={(event)=>handleOpenDelete(event, id)}>
                                   <DeleteIcon />
                                 </IconButton>}
                               </div>

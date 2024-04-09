@@ -22,7 +22,7 @@ export default function UserState(props) {
         { id: 'is_active', label: 'Activo', alignRight: false },
         { id: 'permissions', label: 'Permiso', alignRight: false },
         { id: 'identification', label: 'Identificación', alignRight: false },
-        { id: '' },
+        { id: 'actions', label: 'Acciones', alignRight: true, disablePadding: true, disableSort: true},
     ];
 
     const FILTER_OPTIONS = [
@@ -65,12 +65,12 @@ export default function UserState(props) {
     const [openSnackbar, setOpenSnackbar] = React.useState(false);
     const [messageSnackbar, setMessageSnackbar] = React.useState('');
     const [typeSnackbar, setTypeSnackbar] = React.useState('success');
-    const [loading, setLoading] = React.useState(true);
+    const [loading, setLoading] = React.useState(false);
 
     const getUsers = async () => {
         try {
             const response = await getAllUsers();
-            setUsers(response.data);
+            setUsers(response);
             setLoading(false)
         } catch (error) {
             setTypeSnackbar('error');
@@ -140,13 +140,14 @@ export default function UserState(props) {
         }
     };
 
-    useEffect(() => {
+/*    useEffect(() => {
         getUsers();
-    }, []);
+    }, []);*/
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUser({ ...user, [name]: value });
+        console.log(value);
     }
 
     const handleSubmit = (event) => {
@@ -271,9 +272,11 @@ export default function UserState(props) {
     }
 
     // const filteredUsers = applySortFilter(users, getComparator(order, orderBy), filterName, filterField, 'usuarios');
+    console.log(users)
     let filteredUsers = [];
-    if (users.length > 0) {
+    if (users?.length > 0) {
         filteredUsers = applySortFilter(users, getComparator(order, orderBy), filterName, filterField, 'usuarios');
+        console.log(filteredUsers);
     }
     const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - users.length) : 0;
     const isNotFound = !filteredUsers.length && !!filterName;

@@ -85,7 +85,7 @@ export default function UserForm() {
                 >
                     <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                         <Typography variant="h4" gutterBottom>
-                            {edit ? "Editar" : "Crear"} Cliente
+                            {edit ? "Editar" : "Crear"} Usuario
                         </Typography>
                     </Stack>
                     <Grid container spacing={3}>
@@ -93,7 +93,8 @@ export default function UserForm() {
                             <TextField
                                 id={"usuario"}
                                 fullWidth
-                                name="usuario"
+                                required
+                                name="username"
                                 value={user.username}
                                 onChange={handleInputChange}
                                 onBlur={handleOnBlur}
@@ -106,7 +107,7 @@ export default function UserForm() {
                                 id={"nombre"}
                                 fullWidth
                                 required
-                                name="nombre"
+                                name="first_name"
                                 value={user.first_name}
                                 onChange={handleInputChange}
                                 onBlur={handleOnBlur}
@@ -119,7 +120,7 @@ export default function UserForm() {
                                 id={"apellido"}
                                 fullWidth
                                 required
-                                name={"apellido"}
+                                name={"last_name"}
                                 value={user.last_name}
                                 onChange={handleInputChange}
                                 onBlur={handleOnBlur}
@@ -132,7 +133,7 @@ export default function UserForm() {
                             id={"correo"}
                             fullWidth
                             required
-                            name={"correo"}
+                            name={"email"}
                             value={user.email}
                             onChange={handleInputChange}
                             onBlur={handleOnBlur}
@@ -140,36 +141,12 @@ export default function UserForm() {
                             style={textFieldStyle}
                         />
                     </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        checked={user.is_staff}
-                                        onChange={handleInputChange}
-                                        name="is_staff"
-                                    />
-                                }
-                                label="Es del personal"
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        checked={user.is_active}
-                                        onChange={handleInputChange}
-                                        name="is_active"
-                                    />
-                                }
-                                label="Está activo"
-                            />
-                        </Grid>
                         <Grid item xs={12} sm={3}>
                             <TextField
                                 id={"permisos"}
                                 fullWidth
                                 required
-                                name={"permisos"}
+                                name={"permissions"}
                                 value={user.permissions}
                                 onChange={handleInputChange}
                                 onBlur={handleOnBlur}
@@ -183,7 +160,7 @@ export default function UserForm() {
                                 id={"identificacion"}
                                 fullWidth
                                 required
-                                name={"identificacion"}
+                                name={"identification"}
                                 value={user.identification}
                                 onChange={handleInputChange}
                                 onBlur={handleOnBlur}
