@@ -5,6 +5,10 @@ from django.contrib.auth.models import AbstractUser, UserManager
 class User(AbstractUser):
     permission = models.CharField(max_length=150, blank=True)
     identification = models.CharField(max_length=20, blank=False)
+    is_staff = None
+    is_active = None
+    last_login = None
+    password = None
 
     class Meta:
         db_table = "User"
