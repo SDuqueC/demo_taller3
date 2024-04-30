@@ -5,11 +5,11 @@ import {Button,ButtonToolbar } from 'react-bootstrap';
 import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import AddUserModal from "./AddUserModal";
-import UpdateUserModal from "./UpdateUserModal";
+import UpdateUserModal from "../components/UpdateUserModal";
 import { getAllUsers, deleteUser } from '../api/UserApi';
 
 
-const Manage = () => {
+const ManageUsers = () => {
     const [users, setUsers] = useState([]);
     const [addModalShow, setAddModalShow] = useState(false);
     const [editModalShow, setEditModalShow] = useState(false);
@@ -113,4 +113,4 @@ const Manage = () => {
     );
 };
 
-export default Manage;
+export default ManageUsers;

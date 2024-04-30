@@ -2,3 +2,14 @@ body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 0;
 }
+
+.labelPrimary {
+  font: 14px "Noto Sans", Futura, sans-serif;
+  margin: 0;
+}
+
+.labelSecondary {
+  font: 12px "Noto Sans", Futura, sans-serif;
+  font-style: italic;
+  margin: 0;
+}

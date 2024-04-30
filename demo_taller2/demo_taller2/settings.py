@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'psycopg2',
     'corsheaders',
-    'Users'
+    'Users',
+    'Products'
 ]
 
 

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
-#Sobrescritura del usuario de Django:
+#Sobrescritura del usuario de Django
 class User(AbstractUser):
     permission = models.CharField(max_length=150, blank=True)
     identification = models.CharField(max_length=20, blank=False)
@@ -24,6 +24,7 @@ class Rol(models.Model):
 
     class Meta:
         db_table = "Rol"
+
 
 class UserRol(models.Model):
     id = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)

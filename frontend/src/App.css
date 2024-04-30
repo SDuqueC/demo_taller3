@@ -10,7 +10,7 @@ body, html {
 
 .sidebar {
   display: flex;
-  height: 100vh;
+  height: 200vh;
   float: left;
   overflow: 'scroll initial';
 }
@@ -23,10 +23,19 @@ body, html {
   padding: 30px;
 }
 
+.side-col {
+  padding: 5%;
+}
+
 .react-bootstrap-table thead {
   position: sticky;
   top: 0;
   background-color: #333;
   z-index: 1021;
   color: white;
+}
+
+.apexchart {
+  position: sticky;
+  top: 0;
 }
