@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { getQuantityByBrand } from '../api/ProductApi';
-import {ProductsByStock, ProductsByPrice, ProductsByBrand, ProductsByCategory} from '../components/chart';
+import {ProductsByStock, ProductsByPrice, ProductsByBrand, ProductsByCategory} from '../components/charts';
 
 const ProductsDashboard = () => {
     const [chartData, setChartData] = useState({ options: {}, series: [] });
