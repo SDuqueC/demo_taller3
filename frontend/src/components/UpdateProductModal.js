@@ -24,7 +24,7 @@ const UpdateProductModal = (props) => {
 
             <Modal
                 {...props}
-                size="lg"
+                size="md"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered >
 
@@ -35,7 +35,7 @@ const UpdateProductModal = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <Row>
-                        <Col sm={6}>
+                        <Col sm={12}>
                             <Form onSubmit={handleSubmit}>
                                 <Form.Group controlId="name">
                                     <Form.Label>Name</Form.Label>

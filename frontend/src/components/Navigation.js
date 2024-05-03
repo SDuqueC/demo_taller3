@@ -23,7 +23,7 @@ const Navigation = () => {
                         className="d-inline-block align-center"
                         alt="React Bootstrap logo"
                     />{' '}
-                    User Management System
+                    React Bootstrap App
                 </Navbar.Brand>
             </Navbar>
             <div className='sidebar'>

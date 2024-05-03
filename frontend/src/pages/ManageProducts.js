@@ -4,7 +4,7 @@ import {Table} from 'react-bootstrap';
 import {Button,ButtonToolbar } from 'react-bootstrap';
 import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
-import AddProductModal from "./AddProductModal";
+import AddProductModal from "../components/AddProductModal";
 import UpdateProductModal from "../components/UpdateProductModal";
 import { getAllProducts, deleteProduct } from '../api/ProductApi';
 

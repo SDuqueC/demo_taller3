@@ -41,11 +41,19 @@ const ProductsDashboard = () => {
 
     return (
         <div className="container-fluid side-container">
-            <div className="row side-row">
+            {/*<div className="row side-row">
                 <ProductsByBrand />
             </div>
             <div className="row side-row">
                 <ProductsByCategory />
+            </div>*/}
+            <div className="row side-row">
+                <div className="col side-col">
+                    <ProductsByBrand />
+                </div>
+                <div className="col side-col">
+                    <ProductsByCategory />
+                </div>
             </div>
             <div className="row side-row">
                 <div className="col side-col">

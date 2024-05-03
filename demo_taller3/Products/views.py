@@ -11,26 +11,6 @@ class ProductoViewSet(ModelViewSet):
     serializer_class = ProductoSerializer
 
     @action(detail=False, methods=['get'])
-    def por_marca(self, request):
-        brand = request.query_params.get('brand', None)
-        if brand is not None:
-            products = Producto.objects.filter(brand=brand)
-            serializer = self.get_serializer(products, many=True)
-            return Response(serializer.data)
-        else:
-            return Response({"error": "Brand not provided"}, status=400)
-
-    @action(detail=False, methods=['get'])
-    def por_categoria(self, request):
-        category = request.query_params.get('category', None)
-        if category is not None:
-            products = Producto.objects.filter(category=category)
-            serializer = self.get_serializer(products, many=True)
-            return Response(serializer.data)
-        else:
-            return Response({"error": "Category not provided"}, status=400)
-
-    @action(detail=False, methods=['get'])
     def quantity_by_brand(self, request):
         # Group by brand and count the number of products for each brand
         product_counts = Producto.objects.values('brand').annotate(count=Count('id'))

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Chart from 'react-apexcharts';
 import { getQuantityByBrand } from '../../api/ProductApi';
+import ReactApexChart from "react-apexcharts";
 
 const ProductsByBrand = () => {
     const [chartData, setChartData] = useState({ options: {}, series: [] });
@@ -10,14 +10,13 @@ const ProductsByBrand = () => {
             const data = await getQuantityByBrand();
 
             if (data) {
-                //const seriesData = data.map(item => Number(item.count));
 
-                const seriesData = data.map(item => {
-                    return {
-                        name: [item.brand],
-                        data: [Number(item.count)]
-                    };
-                });
+                const seriesData = data.map(item => Number(item.count));
+                const labels = data.map(item => item.brand);
+
+                const series = [{
+                    data: seriesData
+                }];
 
                 setChartData({
                     options: {
@@ -25,22 +24,34 @@ const ProductsByBrand = () => {
                             id: 'basic-bar',
                         },
                         xaxis: {
-                            categories: seriesData.map(item => item.name)
+                            categories: data.map(item => item.brand)
                         },
                         plotOptions: {
                             bar: {
                                 borderRadius: 4,
-                                borderRadiusApplication: 'end'
+                                borderRadiusApplication: 'end',
+                                distributed: true
                             }
                         },
+                        colors: [ // this array contains different color code for each data
+                            "#25c7ff",
+                            "#2a617a",
+                            "#ff3060",
+                            "#f5770e",
+                            "#7637ff",
+                            "#66ff4b"
+                        ],
                         dataLabels: {
                             enabled: false
+                        },
+                        legend: {
+                            show: false
                         },
                         title: {
                             text: 'Product Quantity by Brand',
                         }
                     },
-                    series: seriesData
+                    series: series
                 });
             }
         };
@@ -50,7 +61,7 @@ const ProductsByBrand = () => {
 
     return (
         <div className="apexchart">
-            <Chart
+            <ReactApexChart
                 options={chartData.options}
                 series={chartData.series}
                 type='bar'

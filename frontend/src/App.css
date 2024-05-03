@@ -20,11 +20,11 @@ body, html {
 }
 
 .side-row {
-  padding: 30px;
+  padding: 0 15px;
 }
 
 .side-col {
-  padding: 5%;
+  padding: 3% 10% 3% 10%;
 }
 
 .react-bootstrap-table thead {

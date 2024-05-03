@@ -4,7 +4,7 @@ import {Table} from 'react-bootstrap';
 import {Button,ButtonToolbar } from 'react-bootstrap';
 import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
-import AddUserModal from "./AddUserModal";
+import AddUserModal from "../components/AddUserModal";
 import UpdateUserModal from "../components/UpdateUserModal";
 import { getAllUsers, deleteUser } from '../api/UserApi';
 
